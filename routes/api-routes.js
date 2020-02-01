@@ -45,4 +45,14 @@ module.exports = function(app){
         });
     });
 
+    app.delete("/api/workouts", (req, res) => {
+        db.Workout.findByIdAndDelete(req.body.id)
+        .then(() => {
+            res.json(true);
+        })
+        .catch(err => {
+            res.json(err);
+        });
+    });
+
 }
